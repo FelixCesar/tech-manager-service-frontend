@@ -1,0 +1,17 @@
+import { Routes } from '@angular/router';
+
+import { Index } from './layout/index';
+import { Dashboard } from './features/pages/dashboard/dashboard';
+import { Settings } from './features/pages/settings/settings';
+
+export const routes: Routes = [
+  {
+    path: '',
+    component: Index,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: Dashboard },
+      { path: 'settings', component: Settings }
+    ]
+  }
+];
