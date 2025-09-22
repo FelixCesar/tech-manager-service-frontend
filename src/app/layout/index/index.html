@@ -1,15 +1,9 @@
-<div class="flex h-screen">
-  <!-- Sidebar -->
-  <app-sidebar class="w-64 bg-gray-800 text-white"></app-sidebar>
+<app-left-sidebar
+  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+  (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"
+/>
 
-  <!-- Main Content -->
-  <div class="flex-1 flex flex-col">
-    <!-- Header -->
-    <app-header class="h-16 bg-white shadow"></app-header>
-
-    <!-- Body (contenido dinámico) -->
-    <main class="flex-1 p-4 overflow-auto bg-gray-100">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-</div>
+<app-main
+  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+  [screenWidth]="screenWidth()"
+/>

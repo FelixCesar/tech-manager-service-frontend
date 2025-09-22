@@ -1,0 +1,147 @@
+.sidenav {
+  background: #8cd97d;
+  transition: all 0.5s ease;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 16.5625rem;
+  height: 100vh;
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+}
+
+.sidenav-collapsed {
+  width: 5rem;
+}
+
+.sidenav .logo-container {
+  display: flex;
+  align-items: center;
+  padding: 0.938rem 0.938rem 0 0.938rem;
+  width: 100%;
+}
+
+.sidenav .logo-container .logo {
+  background: #9fc5da;
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  border-radius: 0.313rem;
+  padding: 0.313rem;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+}
+
+.sidenav .logo-container .logo-text {
+  margin-left: 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.sidenav .logo-container .btn-close {
+  margin-left: auto;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+
+.sidenav .logo-container .btn-close mat-icon {
+  color: #fff;
+  font-size: 24px;
+}
+
+/* ==== Nav ==== */
+.sidenav-nav {
+  list-style: none;
+  padding: 0.938rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* que los items ocupen todo el ancho */
+  height: calc(100% - 3.65rem);
+  cursor: pointer;
+}
+
+.sidenav-nav .sidenav-nav-item {
+  width: 100%;
+  margin-bottom: 0.625rem;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: black;
+  text-decoration: none;
+  border-radius: 0.625rem;
+  transition: all 0.3s ease;
+  padding: 0;
+  overflow: visible;
+}
+
+/* ==== Iconos ==== */
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;     /* espacio reservado para el icono */
+  min-width: 2.5rem;
+  height: 100%;
+  margin-left: 0.3rem;  /* separación desde el borde izquierdo */
+  font-size: 30px;
+  line-height: 1;
+}
+
+.sidenav-link-icon mat-icon,
+.sidenav-link-icon i {
+  display: block;
+  font-size: 22px;   /* tamaño del ícono */
+  line-height: 1;
+  color: inherit;    /* hereda color del link */
+}
+
+/* ==== Texto ==== */
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-text {
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+
+/* ==== Hover / Active ==== */
+.sidenav-nav .sidenav-nav-item:hover .sidenav-nav-link {
+  background-color: #9fc5da;
+  color: #000;
+}
+
+.active {
+  background-color: #9fc5da;
+}
+
+.active .sidenav-link-icon,
+.active .sidenav-link-text {
+  color: #000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding: 0.938rem;
+  width: 100%;
+  position: relative; 
+}
+
+.logo-img {
+  max-width: 4.7rem;
+  height: auto;
+  position: absolute;
+  left: 50%;             
+  transform: translateX(-50%);
+}
+
+.logo-container .btn-close {
+  margin-left: auto; 
+}
