@@ -1,0 +1,78 @@
+body {
+  font-family: Inter, system-ui, -apple-system, Roboto, "Segoe UI", Arial;
+  max-width: 980px;
+  margin: 28px auto;
+  color: #0f172a;
+}
+h1 {
+  font-size: 20px;
+}
+.card {
+  border: 1px solid #e6e9ee;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 12px;
+}
+input[type=file] {
+  display: block;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+th,
+td {
+  padding: 8px;
+  border: 1px solid #e6e9ee;
+  text-align: left;
+  font-size: 13px;
+}
+.muted {
+  color: #64748b;
+  font-size: 13px;
+}
+.flex {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+button {
+  background: #0ea5a4;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 0;
+  cursor: pointer;
+}
+button.secondary {
+  background: #64748b;
+}
+pre {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 12px;
+  border-radius: 6px;
+  overflow: auto;
+}
+.chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.chip {
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: #eef2f7;
+  border: 1px solid #e2e8f0;
+}
+label {
+  font-size: 14px;
+}
+.mt-1 {
+  margin-top: 8px;
+}
+.mt-2 {
+  margin-top: 12px;
+}

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './header.css'
 })
 export class Header {
+
+  @Input() isLeftSidebarCollapsed: boolean = false;
 
 }

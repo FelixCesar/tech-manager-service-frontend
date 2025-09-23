@@ -1,1 +1,71 @@
-<p>filtro works!</p>
+<h1>Filtro de Excel por Operador</h1>
+
+<div class="card">
+  <div class="muted">
+    Sube uno o varios archivos Excel (.xlsx / .xls). La herramienta asume que cada archivo tiene una
+    <strong>primera hoja</strong> con 3 columnas: la primera columna puede tener encabezado vacío, la
+    segunda contiene números (no se filtrará), y la tercera contiene el operador (sí se filtrará).
+  </div>
+  <div class="flex mt-2">
+    <input type="file" (change)="onFileSelected($event)" multiple accept=".xlsx,.xls" />
+    <button (click)="loadFiles()">Cargar archivos</button>
+  </div>
+</div>
+
+<div *ngIf="combined.length > 0" class="card">
+  <div class="flex">
+    <label>Columna de operador:</label>
+    <select [(ngModel)]="opColumn">
+      <option *ngFor="let h of detectedHeaders" [value]="h">{{ h || '(vacío)' }}</option>
+    </select>
+    <label style="margin-left:8px">
+      <input type="checkbox" [(ngModel)]="askOrange" /> Preguntar filtrar <strong>Orange</strong>
+    </label>
+  </div>
+
+  <div class="mt-2">
+    <label><input type="radio" name="mode" value="include" [(ngModel)]="mode" /> Incluir solo seleccionados</label>
+    <label style="margin-left:12px"><input type="radio" name="mode" value="exclude" [(ngModel)]="mode" /> Excluir seleccionados</label>
+  </div>
+
+  <div class="mt-2">
+    <div class="muted">Operadores detectados:</div>
+    <div class="chips mt-1">
+<label *ngFor="let op of detectedOperators" class="chip">
+  <input
+    type="checkbox"
+    [checked]="appliedFilters.includes(op)"
+    (change)="toggleFilter(op, getChecked($event))"
+  />
+  {{ op }}
+</label>
+
+
+    </div>
+  </div>
+
+  <div class="flex mt-2">
+    <button (click)="applyFilters()">Aplicar filtro</button>
+    <button class="secondary" (click)="saveExcel()" [disabled]="lastResult.length===0">Guardar resultado (.xlsx)</button>
+    <button class="secondary" (click)="saveCsv()" [disabled]="lastResult.length===0">Guardar resultado (.csv)</button>
+  </div>
+</div>
+
+<div *ngIf="previewRows.length > 0" class="card">
+  <h2>Previsualización (primeras 50 filas)</h2>
+  <div style="overflow:auto;max-height:360px">
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let h of previewHeaders">{{ h }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of previewRows">
+          <td *ngFor="let h of previewHeaders">{{ row[h] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="muted">{{ summary }}</div>
+</div>

@@ -8,9 +8,6 @@
         </button>
         @if (!isLeftSidebarCollapsed()) {
             <img src="dedikall.png" alt="Dedikall Logo" class="logo-img" />
-            <button class="btn-close" (click)="closeSidenav()">
-            <mat-icon class="close-icon">close</mat-icon>
-            </button>
         }
 
     </div>
@@ -19,6 +16,8 @@
         <li class="sidenav-nav-item">
             <a
             class="sidenav-nav-link"
+            [matTooltip]="isLeftSidebarCollapsed() ? item.label : ''"            
+            matTooltipPosition="right"
             [routerLink]="item.routeLink"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"

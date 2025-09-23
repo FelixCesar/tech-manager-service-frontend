@@ -1,0 +1,64 @@
+<h1>Verificar Prefijos de Una Base.</h1>
+<div class="card">
+    <div class="muted">
+        Sube uno o varios archivos Excel (.xlsx / .xls).
+        La herramienta leerá la <strong>primera hoja</strong> de cada archivo.
+    </div>
+    <div class="flex" style="margin-top:12px">
+        <input type="file" (change)="onFileChange($event)" accept=".xlsx,.xls" multiple />
+        <button (click)="processFiles()">Procesar archivos</button>
+        <button class="secondary" [disabled]="!resultsVisible" (click)="downloadCsv()">Descargar CSV resultados</button>
+    </div>
+</div>
+
+@if (headers.length) {
+<div class="card">
+    <div class="flex">
+        <label>Columna detectada / seleccionar:</label>
+        <select [(ngModel)]="detectedColumn">
+            <option *ngFor="let h of headers" [value]="h">{{h}}</option>
+        </select>
+        <label style="margin-left:8px">
+            <input type="checkbox" [(ngModel)]="combineFiles" /> Combinar archivos en orden
+        </label>
+    </div>
+</div>
+}
+
+
+@if (resultsVisible) {
+<div class="card">
+    <h2>Resumen por bloques contiguos</h2>
+    <div class="muted">{{summary}}</div>
+    <div style="margin-top:8px;overflow:auto;max-height:360px">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Prefijo</th>
+                    <th>Rango</th>
+                    <th>Filas</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let b of blocks; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{b.prefix}}</td>
+                    <td>{{b.start}}-{{b.end}}</td>
+                    <td>{{b.count}}</td>
+                    <td>{{b.startMeta.fileName}}: {{b.startMeta.fileRowExcel}}</td>
+                    <td>{{b.endMeta.fileName}}: {{b.endMeta.fileRowExcel}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="muted">{{distinctPref}}</div>
+</div>
+
+<div class="card">
+    <h2>Debug / Primeros 20 registros</h2>
+    <pre>{{debugText}}</pre>
+</div>
+}

@@ -4,16 +4,17 @@ import { LeftSidebar } from '../../shared/components/left-sidebar/left-sidebar';
 import { isPlatformBrowser } from '@angular/common';
 
 import { Main } from '../main/main';
+import { Header } from '../../shared/components/header/header';
 
 @Component({
   selector: 'app-index',
-  imports: [LeftSidebar, Main],
+  imports: [LeftSidebar, Main,Header],
   templateUrl: './index.html',
   styleUrl: './index.css'
 })
 export class Index implements OnInit {
 
-isLeftSidebarCollapsed = signal<boolean>(false);
+  isLeftSidebarCollapsed = signal<boolean>(false);
   screenWidth = signal<number>(0);
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
